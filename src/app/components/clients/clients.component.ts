@@ -8,6 +8,7 @@ import { EditClientComponent } from "../edit-client/edit-client.component";
 import { RemoveComponent } from "../remove/remove.component";
 import { Globals } from "../../models/Globals";
 import { ClientDetailsComponent } from "../client-details/client-details.component";
+import { Router } from "@angular/router";
 declare var $: any;
 
 @Component({
@@ -57,8 +58,15 @@ export class ClientsComponent implements OnInit {
     }
   ];
 
-  constructor(public clientService: ClientService, public global: Globals) {}
+  constructor(
+    public clientService: ClientService,
+    public global: Globals,
+    public router: Router
+  ) {}
   id;
+  search;
+  users: Client[];
+
   ngOnInit() {
     this.clientService.getUsers().subscribe(res => {
       this.rowData = res.map(element => {
@@ -70,9 +78,24 @@ export class ClientsComponent implements OnInit {
           //img: element.snippet.thumbnails.default.url
         };
       });
+      this.users = res;
     });
     this.getTotal();
   }
+
+  pretrazi(event) {
+    this.search = event.target.search.value;
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].name == this.search) {
+        console.log("Ima poklapanja");
+        this.router.navigate(["client-details", this.users[i].id]);
+      } else {
+        console.log("Nema poklapanja");
+        //this.router.navigate(["client-details", this.users[i].id]);
+      }
+    }
+  }
+
   login() {
     $("#myBtn").click(function() {
       $("#Modal").modal("show");

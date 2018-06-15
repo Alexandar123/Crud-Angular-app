@@ -30,12 +30,11 @@ import { Globals } from "./models/Globals";
 import { DetailsComponent } from "./components/details/details.component";
 
 const appRoutes: Routes = [
-  { path: "", component: DashboardComponent },
+  { path: "dashboard", component: DashboardComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "gallery", component: GalleryComponent },
   { path: "", redirectTo: "/login", pathMatch: "full" },
-  //{ path: "clients", component: ClientsComponent },
   { path: "add-client", component: AddClientComponent },
   { path: "clients/:id", component: ClientDetailsComponent },
   { path: "client-details/:id", component: DetailsComponent }
