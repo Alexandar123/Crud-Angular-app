@@ -35,4 +35,5 @@ export class ClientService {
   newClient(client: Client) {
     this.clients.push(client);
   }
+  novia() {}
 }
