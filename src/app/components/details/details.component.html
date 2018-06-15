@@ -1,0 +1,120 @@
+<div class="col-md-12">
+  <div class="container" *ngIf="user">
+    <h2>More info about user:
+      <strong style="color: darkred">{{ user.name }}</strong>
+    </h2>
+    <a href="#" routerLink="/">Back to dashboard</a>
+    <div class="right">
+      <a (click)="edit()" class="text-dark editButton cursor-pointer ">
+        <button class="btn btn-info ">
+          <i class="fa fa-edit fa-lg "></i>
+          <span> EDIT</span>
+        </button>
+      </a>
+
+
+      <a (click)="delete() " class="text-dark deleteButton cursor-pointer ">
+        <button class="btn btn-danger ">
+          <i class="fa fa-trash fa-lg "></i>
+          <span> DELETE</span>
+        </button>
+      </a>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Phone</th>
+          <th>Company name</th>
+          <th>Website</th>
+          <th>Street</th>
+          <th>Zipcode</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{user.id}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.company.name}}</td>
+          <td>{{user.website}}</td>
+          <td>{{user.address.street}}</td>
+          <td>{{user.address.zipcode}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <ng-template>Nema informacija o korisniku {{user.name}}</ng-template>
+  </div>
+</div>
+
+<!--REMOVE BUTTON ON TABLE-->
+<!-- Modal -->
+<div class="modal fade" id="removeModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Obrisi korisnika</h4>
+      </div>
+      <div class="modal-body">
+        <p>Da li ste sigurni da zelite da obrisete?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--REMOVE BUTTON ON TABLE-->
+
+
+<!-- EDIT MODAL-->
+<!-- Modal -->
+<div class="modal fade" id="editModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enter a new data</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" [(ngModel)]="username" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="username">Phone:</label>
+          <input type="text" id="phone" name="phone" [(ngModel)]="phone" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="company">Company name:</label>
+          <input type="text" id="company" name="company" [(ngModel)]="company" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="website">Website :</label>
+          <input type="text" id="website" name="website" [(ngModel)]="website" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="street">Street :</label>
+          <input type="text" id="street" name="street" [(ngModel)]="street" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="zipcode">Zipcode :</label>
+          <input type="text" id="zipcode" name="zipcode" [(ngModel)]="zipcode" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+      </div>
+    </div>
+
+  </div>
+</div>

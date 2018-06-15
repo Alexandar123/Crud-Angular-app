@@ -1,0 +1,106 @@
+<div class="container">
+
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-default btn-lg" id="myBtn">
+    <a (click)="login()" href="#" class="text-dark deleteButton cursor-pointer">
+      <i class="fa fa-sign-in fa-lg"></i>
+      Login
+    </a>
+  </button>
+
+  <!--LOGIN BUTTON -->
+  <!-- Modal -->
+  <div class="modal fade" id="Modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <h4>
+            <span class="glyphicon glyphicon-lock"></span> Login</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname">
+                <span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="psw">
+                <span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="" checked>Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">
+              <span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Not a member?
+            <a href="#" routerLink="/register">Sign Up</a>
+          </p>
+          <p>Forgot
+            <a href="#">Password?</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--LOGIN BUTTON -->
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>
+      <i class="fa fa-users"></i> Clients</h2>
+  </div>
+  <div class="col-md-6">
+    <h5 class="pull-right text-muted">Total Owed: {{totalOwed | currency:"USD":true}}</h5>
+  </div>
+</div>
+<hr>
+<div class="container-fluid">
+  <div class="gallery" *ngFor="let nesto of render">
+    <img [src]="nesto.snippet.thumbnails.medium.url">
+    <div class="desc">Add a description of the image here</div>
+  </div>
+</div>
+<div class="col-md-12" style="width: 100%;">
+
+  <ag-grid-angular #agGrid style="width: 100%; height: 500px;" class="ag-theme-balham" [enableSorting]="true" [enableFilter]="true"
+    [rowData]="rowData" [columnDefs]="columnDefs" rowSelection="multiple" [animateRows]="true" [rowSelection]="rowSelection">
+  </ag-grid-angular>
+</div>
+
+<!--REMOVE BUTTON ON TABLE-->
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Obrisi korisnika</h4>
+      </div>
+      <div class="modal-body">
+        <p>Da li ste sigurni da zelite da obrisete?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--REMOVE BUTTON ON TABLE-->
